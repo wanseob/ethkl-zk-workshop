@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>(X,Y)</title>
+    <style>
+        #copiableBlock {
+            padding: 15px;
+            border: 1px solid black;
+            width: 300px;
+            max-height: 100px;
+            overflow: auto;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>(X,Y)</h2>
+    <p>You can copy the parameters by clicking the block below:</p>
+
+    <div id="copiableBlock" onclick="copyToClipboard()">
+        x: <span id="xValue">None</span><br>
+        y: <span id="yValue">None</span>
+    </div>
+
+    <p>
+        Kljpwoly aopz alea bzpun aol Jhlzhy jpwoly dpao h zopma vm 7.
+        Wslhzl klalytpul h zleapj wvsfuvtphs (klnyll 6) aoha pualywvshalz aol npclu khah wvpuaz.
+        Zbizlxbluasf, lchsbhal aol wvsfuvtphs ha h chsbl vm 9.
+        Mpuhssf, tvkbshypgl aol ylzbsa bzpun aol zpgl vm aol mpupal mplsk vm aol IhifQbiqbi Jbycl.
+    </p>
+
+    <script>
+        function getQueryParams() {
+            let queryParams = new URLSearchParams(window.location.search);
+            let x = queryParams.get('x') || 'None';
+            let y = queryParams.get('y') || 'None';
+            document.getElementById('xValue').textContent = x;
+            document.getElementById('yValue').textContent = y;
+        }
+
+        function copyToClipboard() {
+            let textToCopy = 'x: ' + document.getElementById('xValue').textContent + '\n' + 'y: ' + document.getElementById('yValue').textContent;
+            let textArea = document.createElement("textarea");
+            textArea.value = textToCopy;
+            document.body.appendChild(textArea);
+            textArea.select();
+            document.execCommand("Copy");
+            textArea.remove();
+            alert("Copied to clipboard!");
+        }
+
+        getQueryParams();
+    </script>
+
+</body>
+
+</html>
