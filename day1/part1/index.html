@@ -1,0 +1,4089 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+    <title></title>
+    <link rel="stylesheet" href="dist/reveal.css" />
+    <link rel="stylesheet" href="dist/theme/black.css" id="theme" />
+    <link rel="stylesheet" href="plugin/highlight/zenburn.css" />
+	<link rel="stylesheet" href="css/layout.css" />
+	<link rel="stylesheet" href="plugin/customcontrols/style.css">
+
+
+
+    <script defer src="dist/fontawesome/all.min.js"></script>
+
+	<script type="text/javascript">
+		var forgetPop = true;
+		function onPopState(event) {
+			if(forgetPop){
+				forgetPop = false;
+			} else {
+				parent.postMessage(event.target.location.href, "app://obsidian.md");
+			}
+        }
+		window.onpopstate = onPopState;
+		window.onmessage = event => {
+			if(event.data == "reload"){
+				window.document.location.reload();
+			}
+			forgetPop = true;
+		}
+
+		function fitElements(){
+			const itemsToFit = document.getElementsByClassName('fitText');
+			for (const item in itemsToFit) {
+				if (Object.hasOwnProperty.call(itemsToFit, item)) {
+					var element = itemsToFit[item];
+					fitElement(element,1, 1000);
+					element.classList.remove('fitText');
+				}
+			}
+		}
+
+		function fitElement(element, start, end){
+
+			let size = (end + start) / 2;
+			element.style.fontSize = `${size}px`;
+
+			if(Math.abs(start - end) < 1){
+				while(element.scrollHeight > element.offsetHeight){
+					size--;
+					element.style.fontSize = `${size}px`;
+				}
+				return;
+			}
+
+			if(element.scrollHeight > element.offsetHeight){
+				fitElement(element, start, size);
+			} else {
+				fitElement(element, size, end);
+			}		
+		}
+
+
+		document.onreadystatechange = () => {
+			fitElements();
+			if (document.readyState === 'complete') {
+				if (window.location.href.indexOf("?export") != -1){
+					parent.postMessage(event.target.location.href, "app://obsidian.md");
+				}
+				if (window.location.href.indexOf("print-pdf") != -1){
+					let stateCheck = setInterval(() => {
+						clearInterval(stateCheck);
+						window.print();
+					}, 250);
+				}
+			}
+	};
+
+
+        </script>
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides"><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<style>
+h1,h2,h3,h4,h5,h6 { 
+    text-transform: none !important; 
+} 
+strong { 
+    padding-left: 1rem; 
+    padding-right: 1rem; 
+    background-color: #836953; 
+} 
+hr { 
+    width: 100%; 
+    border: 1px solid white; 
+} 
+.left {
+	text-align: left;
+}
+.small {
+	font-size: 0.7em;
+}
+.title h1, .title h2, .title h3, .title h4, .title h5, .title h6, .title p{ 
+    width: 100%; 
+    position: absolute; 
+    left: 0;
+    top: 0; 
+    background-color: #836953; 
+    padding: 0.2em;
+}
+.footer {
+    width: 100%; 
+    font-size: 0.4em;
+}
+</style>
+
+<div class="title" style="position: absolute; left: 0%; top: 0%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+<!-- .element: class="title" -->
+</div>
+
+
+### ETHKL ZK Workshop
+Wanseob Lim<br>
+PSE, EF
+
+<div class="" style="position: absolute; left: 5%; top: 10%; height: 80%; width: 90%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 30%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 30%; top: 10%; height: 80%; width: 70%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 40%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 40%; top: 10%; height: 80%; width: 60%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 50%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 50%; top: 10%; height: 80%; width: 50%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 60%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 60%; top: 10%; height: 80%; width: 40%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 70%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 70%; top: 10%; height: 80%; width: 30%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 80%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 80%; top: 10%; height: 80%; width: 20%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 90%; height: 5%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+
+<!-- .element: class="footer" -->
+</div>
+<div class="" style="position: absolute; left: 0%; top: 95%; height: 5%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+ETHKL ZK Workshop <!-- .element: style="font-size: 0.3em" -->
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<style>
+h1,h2,h3,h4,h5,h6 { 
+    text-transform: none !important; 
+} 
+strong { 
+    padding-left: 1rem; 
+    padding-right: 1rem; 
+    background-color: #836953; 
+} 
+hr { 
+    width: 100%; 
+    border: 1px solid white; 
+} 
+.left {
+	text-align: left;
+}
+.small {
+	font-size: 0.7em;
+}
+.title h1, .title h2, .title h3, .title h4, .title h5, .title h6, .title p{ 
+    width: 100%; 
+    position: absolute; 
+    left: 0;
+    top: 0; 
+    background-color: #836953; 
+    padding: 0.2em;
+}
+.footer {
+    width: 100%; 
+    font-size: 0.4em;
+}
+</style>
+
+<div class="title" style="position: absolute; left: 0%; top: 0%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+<!-- .element: class="title" -->
+</div>
+
+
+#### Part 1
+#### Unraveling Abstract Algebra and Its Role in Cryptography
+
+<div class="" style="position: absolute; left: 5%; top: 10%; height: 80%; width: 90%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 30%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 30%; top: 10%; height: 80%; width: 70%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 40%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 40%; top: 10%; height: 80%; width: 60%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 50%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 50%; top: 10%; height: 80%; width: 50%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 60%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 60%; top: 10%; height: 80%; width: 40%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 70%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 70%; top: 10%; height: 80%; width: 30%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 80%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 80%; top: 10%; height: 80%; width: 20%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 90%; height: 5%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+
+<!-- .element: class="footer" -->
+</div>
+<div class="" style="position: absolute; left: 0%; top: 95%; height: 5%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+ETHKL ZK Workshop <!-- .element: style="font-size: 0.3em" -->
+</div>
+</div></script></section><section ><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<style>
+h1,h2,h3,h4,h5,h6 { 
+    text-transform: none !important; 
+} 
+strong { 
+    padding-left: 1rem; 
+    padding-right: 1rem; 
+    background-color: #836953; 
+} 
+hr { 
+    width: 100%; 
+    border: 1px solid white; 
+} 
+.left {
+	text-align: left;
+}
+.small {
+	font-size: 0.7em;
+}
+.title h1, .title h2, .title h3, .title h4, .title h5, .title h6, .title p{ 
+    width: 100%; 
+    position: absolute; 
+    left: 0;
+    top: 0; 
+    background-color: #836953; 
+    padding: 0.2em;
+}
+.footer {
+    width: 100%; 
+    font-size: 0.4em;
+}
+</style>
+
+<div class="title" style="position: absolute; left: 0%; top: 0%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+<!-- .element: class="title" -->
+</div>
+
+
+# Itqwr
+
+
+<div class="" style="position: absolute; left: 5%; top: 10%; height: 80%; width: 90%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 30%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 30%; top: 10%; height: 80%; width: 70%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 40%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 40%; top: 10%; height: 80%; width: 60%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 50%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 50%; top: 10%; height: 80%; width: 50%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 60%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 60%; top: 10%; height: 80%; width: 40%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 70%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 70%; top: 10%; height: 80%; width: 30%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 80%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 80%; top: 10%; height: 80%; width: 20%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 90%; height: 5%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+
+<!-- .element: class="footer" -->
+</div>
+<div class="" style="position: absolute; left: 0%; top: 95%; height: 5%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+ETHKL ZK Workshop <!-- .element: style="font-size: 0.3em" -->
+</div>
+</div>
+
+<aside class="notes"><ul>
+<li>Itqwr<ul>
+<li>Q: What does this mean?</li>
+<li>A: Group in Caesar Cipher</li>
+</ul>
+</li>
+<li>Let&#39;s revisit the activities that we had on the kick off.<ul>
+<li>Secret Sharing Scheme</li>
+<li>Caesar Cipher</li>
+<li>Polynomial Interpolation</li>
+<li>Modular Arithmetization</li>
+</ul>
+</li>
+</ul>
+</aside></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<style>
+h1,h2,h3,h4,h5,h6 { 
+    text-transform: none !important; 
+} 
+strong { 
+    padding-left: 1rem; 
+    padding-right: 1rem; 
+    background-color: #836953; 
+} 
+hr { 
+    width: 100%; 
+    border: 1px solid white; 
+} 
+.left {
+	text-align: left;
+}
+.small {
+	font-size: 0.7em;
+}
+.title h1, .title h2, .title h3, .title h4, .title h5, .title h6, .title p{ 
+    width: 100%; 
+    position: absolute; 
+    left: 0;
+    top: 0; 
+    background-color: #836953; 
+    padding: 0.2em;
+}
+.footer {
+    width: 100%; 
+    font-size: 0.4em;
+}
+</style>
+
+<div class="title" style="position: absolute; left: 0%; top: 0%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+<div class="block">
+
+#### Caesar Cipher
+</div>
+
+
+<!-- .element: class="title" -->
+</div>
+
+
+
+
+<img src="https://hackmd.io/_uploads/HkiYCISN3.png" alt="" style="object-fit: scale-down">
+
+<img src="https://hackmd.io/_uploads/rJWnRIS4n.png" alt="" style="object-fit: scale-down">
+
+
+
+
+
+<div class="" style="position: absolute; left: 5%; top: 10%; height: 80%; width: 90%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 30%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 30%; top: 10%; height: 80%; width: 70%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 40%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 40%; top: 10%; height: 80%; width: 60%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 50%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 50%; top: 10%; height: 80%; width: 50%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 60%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 60%; top: 10%; height: 80%; width: 40%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 70%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 70%; top: 10%; height: 80%; width: 30%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 80%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 80%; top: 10%; height: 80%; width: 20%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 90%; height: 5%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+<div class="block">
+
+[https://en.wikipedia.org/wiki/Caesar_cipher#/media/File:Caesar_cipher_left_shift_of_3.svg](https://en.wikipedia.org/wiki/Caesar_cipher#/media/File:Caesar_cipher_left_shift_of_3.svg)<br>
+https://ethkl.sss.codes/ https://www.dcode.fr/caesar-cipher
+</div>
+
+
+
+<!-- .element: class="footer" -->
+</div>
+<div class="" style="position: absolute; left: 0%; top: 95%; height: 5%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+ETHKL ZK Workshop <!-- .element: style="font-size: 0.3em" -->
+</div>
+</div>
+
+<aside class="notes"><ul>
+<li>Visit <a href="https://ethkl.sss.codes/">https://ethkl.sss.codes/</a></li>
+<li>Decipher</li>
+<li>What&#39;s the characteristic of the set of those elements?</li>
+<li>Let&#39;s try to express all the elements in Algebraic Math Form
+$
+\mathcal{C} = {A, B, C, \ldots, Z} = {y\ |\ y = x \pmod{26} }
+$</li>
+</ul>
+</aside></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<style>
+h1,h2,h3,h4,h5,h6 { 
+    text-transform: none !important; 
+} 
+strong { 
+    padding-left: 1rem; 
+    padding-right: 1rem; 
+    background-color: #836953; 
+} 
+hr { 
+    width: 100%; 
+    border: 1px solid white; 
+} 
+.left {
+	text-align: left;
+}
+.small {
+	font-size: 0.7em;
+}
+.title h1, .title h2, .title h3, .title h4, .title h5, .title h6, .title p{ 
+    width: 100%; 
+    position: absolute; 
+    left: 0;
+    top: 0; 
+    background-color: #836953; 
+    padding: 0.2em;
+}
+.footer {
+    width: 100%; 
+    font-size: 0.4em;
+}
+</style>
+
+<div class="title" style="position: absolute; left: 0%; top: 0%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+<div class="block">
+
+#### Group: usually denoted as `$\mathbb{G}$`
+</div>
+
+
+<!-- .element: class="title" -->
+</div>
+
+
+
+
+- Closure:
+    - `$(a \circ b) \in \mathbb{G}$` for `$a,b \in \mathbb{G}$`
+- Associativity
+    - `$(a \circ b) \circ c =a \circ (b \circ c)$` for `$a,b,c \in \mathbb{G}$`
+- Identity:
+    - `$\exists\, e \in \mathbb{G} : e \circ a = a \circ e = a$`
+- Inverses:
+    - `$\exists\, a^{-1} \in \mathbb{G} : a \circ a^{-1} = a^{-1} \circ a = e$`
+
+
+<div class="" style="position: absolute; left: 5%; top: 10%; height: 80%; width: 90%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 30%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 30%; top: 10%; height: 80%; width: 70%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 40%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 40%; top: 10%; height: 80%; width: 60%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 50%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 50%; top: 10%; height: 80%; width: 50%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 60%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 60%; top: 10%; height: 80%; width: 40%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 70%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 70%; top: 10%; height: 80%; width: 30%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 80%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 80%; top: 10%; height: 80%; width: 20%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 90%; height: 5%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+
+<!-- .element: class="footer" -->
+</div>
+<div class="" style="position: absolute; left: 0%; top: 95%; height: 5%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+ETHKL ZK Workshop <!-- .element: style="font-size: 0.3em" -->
+</div>
+</div>
+
+<aside class="notes"><ul>
+<li>Group is a set</li>
+<li>That satisfies Closure/Associativity/Identity/Inverses about a certain binary operation</li>
+<li>Let&#39;s try to find an example: <code>$\mathbb{Z}$</code></li>
+</ul>
+</aside></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<style>
+h1,h2,h3,h4,h5,h6 { 
+    text-transform: none !important; 
+} 
+strong { 
+    padding-left: 1rem; 
+    padding-right: 1rem; 
+    background-color: #836953; 
+} 
+hr { 
+    width: 100%; 
+    border: 1px solid white; 
+} 
+.left {
+	text-align: left;
+}
+.small {
+	font-size: 0.7em;
+}
+.title h1, .title h2, .title h3, .title h4, .title h5, .title h6, .title p{ 
+    width: 100%; 
+    position: absolute; 
+    left: 0;
+    top: 0; 
+    background-color: #836953; 
+    padding: 0.2em;
+}
+.footer {
+    width: 100%; 
+    font-size: 0.4em;
+}
+</style>
+
+<div class="title" style="position: absolute; left: 0%; top: 0%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+<!-- .element: class="title" -->
+</div>
+
+
+
+
+<div class="" style="position: absolute; left: 5%; top: 10%; height: 80%; width: 90%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+Q: Is ___ a group?
+- `$(\mathbb{Z}, +)$`
+- `$(\mathbb{Z}, \times)$`
+- `$(\mathbb{Q^*}, \times)$`
+
+`$\mathbb{Z}$`: The set of all integers<br>
+`$\mathbb{Q^*}$`: The set of all non-zero rationale numbers
+<!-- .element: class="small left" -->
+</div>
+
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 30%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 30%; top: 10%; height: 80%; width: 70%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 40%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 40%; top: 10%; height: 80%; width: 60%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 50%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 50%; top: 10%; height: 80%; width: 50%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 60%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 60%; top: 10%; height: 80%; width: 40%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 70%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 70%; top: 10%; height: 80%; width: 30%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 80%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 80%; top: 10%; height: 80%; width: 20%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 90%; height: 5%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+
+<!-- .element: class="footer" -->
+</div>
+<div class="" style="position: absolute; left: 0%; top: 95%; height: 5%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+ETHKL ZK Workshop <!-- .element: style="font-size: 0.3em" -->
+</div>
+</div>
+
+<aside class="notes"><ul>
+<li>Let&#39;s try to write them on the board</li>
+</ul>
+</aside></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<style>
+h1,h2,h3,h4,h5,h6 { 
+    text-transform: none !important; 
+} 
+strong { 
+    padding-left: 1rem; 
+    padding-right: 1rem; 
+    background-color: #836953; 
+} 
+hr { 
+    width: 100%; 
+    border: 1px solid white; 
+} 
+.left {
+	text-align: left;
+}
+.small {
+	font-size: 0.7em;
+}
+.title h1, .title h2, .title h3, .title h4, .title h5, .title h6, .title p{ 
+    width: 100%; 
+    position: absolute; 
+    left: 0;
+    top: 0; 
+    background-color: #836953; 
+    padding: 0.2em;
+}
+.footer {
+    width: 100%; 
+    font-size: 0.4em;
+}
+</style>
+
+<div class="title" style="position: absolute; left: 0%; top: 0%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+<!-- .element: class="title" -->
+</div>
+
+
+
+
+
+<div class="" style="position: absolute; left: 5%; top: 10%; height: 80%; width: 90%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+Q: Can the alphabets and the Caesar Cipher be called a group?
+</div>
+
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 30%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 30%; top: 10%; height: 80%; width: 70%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 40%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 40%; top: 10%; height: 80%; width: 60%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 50%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 50%; top: 10%; height: 80%; width: 50%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 60%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 60%; top: 10%; height: 80%; width: 40%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 70%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 70%; top: 10%; height: 80%; width: 30%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 80%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 80%; top: 10%; height: 80%; width: 20%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 90%; height: 5%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+
+<!-- .element: class="footer" -->
+</div>
+<div class="" style="position: absolute; left: 0%; top: 95%; height: 5%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+ETHKL ZK Workshop <!-- .element: style="font-size: 0.3em" -->
+</div>
+</div>
+
+<aside class="notes"><ul>
+<li>Not only the real number can be the group elemement.</li>
+</ul>
+</aside></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<style>
+h1,h2,h3,h4,h5,h6 { 
+    text-transform: none !important; 
+} 
+strong { 
+    padding-left: 1rem; 
+    padding-right: 1rem; 
+    background-color: #836953; 
+} 
+hr { 
+    width: 100%; 
+    border: 1px solid white; 
+} 
+.left {
+	text-align: left;
+}
+.small {
+	font-size: 0.7em;
+}
+.title h1, .title h2, .title h3, .title h4, .title h5, .title h6, .title p{ 
+    width: 100%; 
+    position: absolute; 
+    left: 0;
+    top: 0; 
+    background-color: #836953; 
+    padding: 0.2em;
+}
+.footer {
+    width: 100%; 
+    font-size: 0.4em;
+}
+</style>
+
+<div class="title" style="position: absolute; left: 0%; top: 0%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+<div class="block">
+
+#### Caesar Cipher is an additive group
+</div>
+
+
+<!-- .element: class="title" -->
+</div>
+
+
+
+
+
+
+
+<div class="" style="position: absolute; left: 5%; top: 10%; height: 80%; width: 90%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+`$\mathcal{C} = \{A, B, C, \ldots, Z\} = \{y\ |\ y = x \pmod{26} \}$`
+
+If we define the encryption operation as: 
+
+- `$a \circ k = a + k \pmod{26}$`
+- `$\text{where} ~ a,k\in \mathcal{C}$`
+
+`$(\mathcal{C}, \circ)$` is a group
+
+</div>
+
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 30%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 30%; top: 10%; height: 80%; width: 70%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 40%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 40%; top: 10%; height: 80%; width: 60%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 50%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 50%; top: 10%; height: 80%; width: 50%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 60%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 60%; top: 10%; height: 80%; width: 40%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 70%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 70%; top: 10%; height: 80%; width: 30%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 80%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 80%; top: 10%; height: 80%; width: 20%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 90%; height: 5%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+
+<!-- .element: class="footer" -->
+</div>
+<div class="" style="position: absolute; left: 0%; top: 95%; height: 5%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+ETHKL ZK Workshop <!-- .element: style="font-size: 0.3em" -->
+</div>
+</div>
+
+<aside class="notes"><ul>
+<li>Let&#39;s see what exactly happens</li>
+</ul>
+</aside></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<style>
+h1,h2,h3,h4,h5,h6 { 
+    text-transform: none !important; 
+} 
+strong { 
+    padding-left: 1rem; 
+    padding-right: 1rem; 
+    background-color: #836953; 
+} 
+hr { 
+    width: 100%; 
+    border: 1px solid white; 
+} 
+.left {
+	text-align: left;
+}
+.small {
+	font-size: 0.7em;
+}
+.title h1, .title h2, .title h3, .title h4, .title h5, .title h6, .title p{ 
+    width: 100%; 
+    position: absolute; 
+    left: 0;
+    top: 0; 
+    background-color: #836953; 
+    padding: 0.2em;
+}
+.footer {
+    width: 100%; 
+    font-size: 0.4em;
+}
+</style>
+
+<div class="title" style="position: absolute; left: 0%; top: 0%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+<!-- .element: class="title" -->
+</div>
+
+
+
+
+
+<div class="" style="position: absolute; left: 5%; top: 10%; height: 80%; width: 90%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+`$\mathcal{C}_k = \{y | y = E_k(x) = (x \circ k) = x + k \pmod{26}, \{x, k\} \subset \mathcal{C}\}$`
+*** 
+
+If `$k = H = 7$`
+
+`$A + H\pmod{26} = H  \quad J + H\pmod{26} = Q \quad S + H\pmod{26} = Z$`
+`$B + H\pmod{26} = I  \quad K + H\pmod{26} = R \quad T + H\pmod{26} = A$`
+`$C + H\pmod{26} = J  \quad L + H\pmod{26} = S \quad U + H\pmod{26} = B$`
+`$D + H\pmod{26} = K  \quad M + H\pmod{26} = T \quad V + H\pmod{26} = C$`
+`$E + H\pmod{26} = L  \quad N + H\pmod{26} = U \quad W + H\pmod{26} = D$`
+`$F + H\pmod{26} = M  \quad O + H\pmod{26} = V \quad X + H\pmod{26} = E$`
+`$G + H\pmod{26} = N  \quad P + H\pmod{26} = W \quad Y + H\pmod{26} = F$`
+`$H + H\pmod{26} = O  \quad Q + H\pmod{26} = X \quad Z + H\pmod{26} = G$`
+`$I + H\pmod{26} = P  \quad R + H\pmod{26} = Y \quad A + H\pmod{26} = H$`
+</div>
+
+ <!-- .element: style="font-size: 0.5em" -->
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 30%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 30%; top: 10%; height: 80%; width: 70%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 40%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 40%; top: 10%; height: 80%; width: 60%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 50%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 50%; top: 10%; height: 80%; width: 50%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 60%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 60%; top: 10%; height: 80%; width: 40%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 70%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 70%; top: 10%; height: 80%; width: 30%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 80%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 80%; top: 10%; height: 80%; width: 20%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 90%; height: 5%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+
+<!-- .element: class="footer" -->
+</div>
+<div class="" style="position: absolute; left: 0%; top: 95%; height: 5%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+ETHKL ZK Workshop <!-- .element: style="font-size: 0.3em" -->
+</div>
+</div>
+
+<aside class="notes"><ul>
+<li>You can see values are just shifted 7 slots to the right</li>
+<li>It&#39;s too easy, right? Let&#39;s try to make a difficult version of group</li>
+</ul>
+</aside></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<style>
+h1,h2,h3,h4,h5,h6 { 
+    text-transform: none !important; 
+} 
+strong { 
+    padding-left: 1rem; 
+    padding-right: 1rem; 
+    background-color: #836953; 
+} 
+hr { 
+    width: 100%; 
+    border: 1px solid white; 
+} 
+.left {
+	text-align: left;
+}
+.small {
+	font-size: 0.7em;
+}
+.title h1, .title h2, .title h3, .title h4, .title h5, .title h6, .title p{ 
+    width: 100%; 
+    position: absolute; 
+    left: 0;
+    top: 0; 
+    background-color: #836953; 
+    padding: 0.2em;
+}
+.footer {
+    width: 100%; 
+    font-size: 0.4em;
+}
+</style>
+
+<div class="title" style="position: absolute; left: 0%; top: 0%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+<div class="block">
+
+#### A more difficult version using a multiplicative group?
+</div>
+
+
+<!-- .element: class="title" -->
+</div>
+
+
+
+
+`$\mathcal{C}^* = \{A, B, ..., Z, Å, Ø \}, |\mathcal{C}^*| = 28$`
+`$\mathcal{C}_q^* = \{ y\ |\ y = g^{x} \pmod q),  x \in \mathbb{Z}_{\geq 0}\}$`
+`$\text{ where } q \text{ is a prime number}$`
+
+***
+
+And let's define the encryption operation as below:
+
+$
+a \circledast k = g^{a} \cdot g^{k} \pmod{29}$<br>
+$a,k\in \mathcal{C^*_q}
+$
+
+
+<div class="" style="position: absolute; left: 5%; top: 10%; height: 80%; width: 90%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 30%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 30%; top: 10%; height: 80%; width: 70%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 40%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 40%; top: 10%; height: 80%; width: 60%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 50%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 50%; top: 10%; height: 80%; width: 50%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 60%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 60%; top: 10%; height: 80%; width: 40%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 70%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 70%; top: 10%; height: 80%; width: 30%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 80%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 80%; top: 10%; height: 80%; width: 20%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 90%; height: 5%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+
+<!-- .element: class="footer" -->
+</div>
+<div class="" style="position: absolute; left: 0%; top: 95%; height: 5%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+ETHKL ZK Workshop <!-- .element: style="font-size: 0.3em" -->
+</div>
+</div>
+
+<aside class="notes"><ul>
+<li>Use NodeJS bigint computation, and show the result to students</li>
+</ul>
+</aside></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<style>
+h1,h2,h3,h4,h5,h6 { 
+    text-transform: none !important; 
+} 
+strong { 
+    padding-left: 1rem; 
+    padding-right: 1rem; 
+    background-color: #836953; 
+} 
+hr { 
+    width: 100%; 
+    border: 1px solid white; 
+} 
+.left {
+	text-align: left;
+}
+.small {
+	font-size: 0.7em;
+}
+.title h1, .title h2, .title h3, .title h4, .title h5, .title h6, .title p{ 
+    width: 100%; 
+    position: absolute; 
+    left: 0;
+    top: 0; 
+    background-color: #836953; 
+    padding: 0.2em;
+}
+.footer {
+    width: 100%; 
+    font-size: 0.4em;
+}
+</style>
+
+<div class="title" style="position: absolute; left: 0%; top: 0%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+<div class="block">
+
+#### A more difficult version using a multiplicative group?
+</div>
+
+
+<!-- .element: class="title" -->
+</div>
+
+
+
+
+
+
+
+<div class="" style="position: absolute; left: 5%; top: 10%; height: 80%; width: 90%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+`$\mathcal{C}_q^* = \{ y\ |\ y = g^{x} \pmod q),  x \in \mathbb{Z}_{\geq 0}\}$`<br> `$\text{ where } q \text{ is a prime}$`
+
+*** 
+
+If `$q = 29$` and `$g=19$`, `$k = 0$`
+
+`$19^{A}\pmod{29}=S \quad  19^{H}\pmod{29}=Y \quad 19^{O}\pmod{29}=J \quad 19^{V}\pmod{29}=D$`
+`$19^{B}\pmod{29}=M \quad  19^{I}\pmod{29}=K \quad 19^{P}\pmod{29}=P \quad 19^{W}\pmod{29}=R$`
+`$19^{C}\pmod{29}=O \quad  19^{J}\pmod{29}=F \quad 19^{Q}\pmod{29}=N \quad 19^{X}\pmod{29}=W$`
+`$19^{D}\pmod{29}=X \quad  19^{K}\pmod{29}=Å \quad 19^{R}\pmod{29}=E \quad 19^{Y}\pmod{29}=B$`
+`$19^{E}\pmod{29}=U \quad  19^{L}\pmod{29}=T \quad 19^{S}\pmod{29}=H \quad 19^{Z}\pmod{29}=I$`
+`$19^{F}\pmod{29}=V \quad  19^{M}\pmod{29}=C \quad 19^{T}\pmod{29}=G \quad 19^{Å}\pmod{29}=Z$`
+`$19^{G}\pmod{29}=L \quad  19^{N}\pmod{29}=Ø \quad 19^{U}\pmod{29}=Q \quad 19^{Ø}\pmod{29}=A$`
+</div>
+
+<!-- .element: style="font-size: 0.5em" -->
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 30%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 30%; top: 10%; height: 80%; width: 70%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 40%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 40%; top: 10%; height: 80%; width: 60%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 50%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 50%; top: 10%; height: 80%; width: 50%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 60%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 60%; top: 10%; height: 80%; width: 40%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 70%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 70%; top: 10%; height: 80%; width: 30%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 80%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 80%; top: 10%; height: 80%; width: 20%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 90%; height: 5%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+
+<!-- .element: class="footer" -->
+</div>
+<div class="" style="position: absolute; left: 0%; top: 95%; height: 5%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+ETHKL ZK Workshop <!-- .element: style="font-size: 0.3em" -->
+</div>
+</div>
+
+<aside class="notes"><ul>
+<li>Use NodeJS bigint to compute the result</li>
+</ul>
+</aside></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<style>
+h1,h2,h3,h4,h5,h6 { 
+    text-transform: none !important; 
+} 
+strong { 
+    padding-left: 1rem; 
+    padding-right: 1rem; 
+    background-color: #836953; 
+} 
+hr { 
+    width: 100%; 
+    border: 1px solid white; 
+} 
+.left {
+	text-align: left;
+}
+.small {
+	font-size: 0.7em;
+}
+.title h1, .title h2, .title h3, .title h4, .title h5, .title h6, .title p{ 
+    width: 100%; 
+    position: absolute; 
+    left: 0;
+    top: 0; 
+    background-color: #836953; 
+    padding: 0.2em;
+}
+.footer {
+    width: 100%; 
+    font-size: 0.4em;
+}
+</style>
+
+<div class="title" style="position: absolute; left: 0%; top: 0%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+<div class="block">
+
+### Generator
+</div>
+
+
+<!-- .element: class="title" -->
+</div>
+
+
+
+
+Generators for additive group `$\mathbb{G}$` satisfy
+
+ `$n \cdot G \in \mathbb{G}$`
+
+Generators for multiplicative group `$\mathbb{G}^*$` satisfy:<br>
+  `$g^{n} \in \mathbb{G^*}$`
+
+<div class="" style="position: absolute; left: 5%; top: 10%; height: 80%; width: 90%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 30%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 30%; top: 10%; height: 80%; width: 70%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 40%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 40%; top: 10%; height: 80%; width: 60%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 50%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 50%; top: 10%; height: 80%; width: 50%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 60%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 60%; top: 10%; height: 80%; width: 40%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 70%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 70%; top: 10%; height: 80%; width: 30%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 80%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 80%; top: 10%; height: 80%; width: 20%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 90%; height: 5%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+
+<!-- .element: class="footer" -->
+</div>
+<div class="" style="position: absolute; left: 0%; top: 95%; height: 5%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+ETHKL ZK Workshop <!-- .element: style="font-size: 0.3em" -->
+</div>
+</div>
+
+<aside class="notes"><p>Q: What if <code>$g$</code> is 3 or 5? in the previous case.</p>
+</aside></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<style>
+h1,h2,h3,h4,h5,h6 { 
+    text-transform: none !important; 
+} 
+strong { 
+    padding-left: 1rem; 
+    padding-right: 1rem; 
+    background-color: #836953; 
+} 
+hr { 
+    width: 100%; 
+    border: 1px solid white; 
+} 
+.left {
+	text-align: left;
+}
+.small {
+	font-size: 0.7em;
+}
+.title h1, .title h2, .title h3, .title h4, .title h5, .title h6, .title p{ 
+    width: 100%; 
+    position: absolute; 
+    left: 0;
+    top: 0; 
+    background-color: #836953; 
+    padding: 0.2em;
+}
+.footer {
+    width: 100%; 
+    font-size: 0.4em;
+}
+</style>
+
+<div class="title" style="position: absolute; left: 0%; top: 0%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+<!-- .element: class="title" -->
+</div>
+
+
+### `$\mathbb{Z}_q$` & `$\mathbb{Z}_q^*$`
+
+***
+
+- `$\mathbb{Z}_q$`: Additive group of integers modulo q
+- `$\mathbb{Z}_q^*$`: Multiplicative group of integers modulo q
+
+
+<div class="" style="position: absolute; left: 5%; top: 10%; height: 80%; width: 90%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 30%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 30%; top: 10%; height: 80%; width: 70%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 40%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 40%; top: 10%; height: 80%; width: 60%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 50%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 50%; top: 10%; height: 80%; width: 50%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 60%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 60%; top: 10%; height: 80%; width: 40%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 70%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 70%; top: 10%; height: 80%; width: 30%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 80%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 80%; top: 10%; height: 80%; width: 20%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 90%; height: 5%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+
+<!-- .element: class="footer" -->
+</div>
+<div class="" style="position: absolute; left: 0%; top: 95%; height: 5%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+ETHKL ZK Workshop <!-- .element: style="font-size: 0.3em" -->
+</div>
+</div>
+
+<aside class="notes"><ul>
+<li>The set of integers are additive group</li>
+<li>The set of non-zero integers are multiplicative group</li>
+<li>They are finite group</li>
+</ul>
+</aside></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<style>
+h1,h2,h3,h4,h5,h6 { 
+    text-transform: none !important; 
+} 
+strong { 
+    padding-left: 1rem; 
+    padding-right: 1rem; 
+    background-color: #836953; 
+} 
+hr { 
+    width: 100%; 
+    border: 1px solid white; 
+} 
+.left {
+	text-align: left;
+}
+.small {
+	font-size: 0.7em;
+}
+.title h1, .title h2, .title h3, .title h4, .title h5, .title h6, .title p{ 
+    width: 100%; 
+    position: absolute; 
+    left: 0;
+    top: 0; 
+    background-color: #836953; 
+    padding: 0.2em;
+}
+.footer {
+    width: 100%; 
+    font-size: 0.4em;
+}
+</style>
+
+<div class="title" style="position: absolute; left: 0%; top: 0%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+<!-- .element: class="title" -->
+</div>
+
+
+Using `$\mathbb{Z}_q$` (Caesar Cipher)
+
+Olssx Dvysk?
+
+***
+
+Using `$\mathbb{Z}_q^*$` (Multiplicative Cipher)
+
+UGYG?
+
+<div class="" style="position: absolute; left: 5%; top: 10%; height: 80%; width: 90%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 30%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 30%; top: 10%; height: 80%; width: 70%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 40%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 40%; top: 10%; height: 80%; width: 60%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 50%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 50%; top: 10%; height: 80%; width: 50%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 60%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 60%; top: 10%; height: 80%; width: 40%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 70%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 70%; top: 10%; height: 80%; width: 30%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 80%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 80%; top: 10%; height: 80%; width: 20%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 90%; height: 5%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+
+<!-- .element: class="footer" -->
+</div>
+<div class="" style="position: absolute; left: 0%; top: 95%; height: 5%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+ETHKL ZK Workshop <!-- .element: style="font-size: 0.3em" -->
+</div>
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<style>
+h1,h2,h3,h4,h5,h6 { 
+    text-transform: none !important; 
+} 
+strong { 
+    padding-left: 1rem; 
+    padding-right: 1rem; 
+    background-color: #836953; 
+} 
+hr { 
+    width: 100%; 
+    border: 1px solid white; 
+} 
+.left {
+	text-align: left;
+}
+.small {
+	font-size: 0.7em;
+}
+.title h1, .title h2, .title h3, .title h4, .title h5, .title h6, .title p{ 
+    width: 100%; 
+    position: absolute; 
+    left: 0;
+    top: 0; 
+    background-color: #836953; 
+    padding: 0.2em;
+}
+.footer {
+    width: 100%; 
+    font-size: 0.4em;
+}
+</style>
+
+<div class="title" style="position: absolute; left: 0%; top: 0%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+<!-- .element: class="title" -->
+</div>
+
+
+It is hard to know `$x$` using `$y$` when `$y = g^{x} \pmod p$`
+
+***
+
+This is called the ***Discrete Logarithm Problem***
+
+<div class="" style="position: absolute; left: 5%; top: 10%; height: 80%; width: 90%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 30%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 30%; top: 10%; height: 80%; width: 70%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 40%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 40%; top: 10%; height: 80%; width: 60%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 50%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 50%; top: 10%; height: 80%; width: 50%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 60%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 60%; top: 10%; height: 80%; width: 40%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 70%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 70%; top: 10%; height: 80%; width: 30%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 80%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 80%; top: 10%; height: 80%; width: 20%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 90%; height: 5%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+
+<!-- .element: class="footer" -->
+</div>
+<div class="" style="position: absolute; left: 0%; top: 95%; height: 5%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+ETHKL ZK Workshop <!-- .element: style="font-size: 0.3em" -->
+</div>
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<style>
+h1,h2,h3,h4,h5,h6 { 
+    text-transform: none !important; 
+} 
+strong { 
+    padding-left: 1rem; 
+    padding-right: 1rem; 
+    background-color: #836953; 
+} 
+hr { 
+    width: 100%; 
+    border: 1px solid white; 
+} 
+.left {
+	text-align: left;
+}
+.small {
+	font-size: 0.7em;
+}
+.title h1, .title h2, .title h3, .title h4, .title h5, .title h6, .title p{ 
+    width: 100%; 
+    position: absolute; 
+    left: 0;
+    top: 0; 
+    background-color: #836953; 
+    padding: 0.2em;
+}
+.footer {
+    width: 100%; 
+    font-size: 0.4em;
+}
+</style>
+
+<div class="title" style="position: absolute; left: 0%; top: 0%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+<!-- .element: class="title" -->
+</div>
+
+
+What can we do w/ the group theory & ***Discrete Logarithm Problem***
+
+<div class="" style="position: absolute; left: 5%; top: 10%; height: 80%; width: 90%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 30%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 30%; top: 10%; height: 80%; width: 70%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 40%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 40%; top: 10%; height: 80%; width: 60%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 50%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 50%; top: 10%; height: 80%; width: 50%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 60%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 60%; top: 10%; height: 80%; width: 40%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 70%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 70%; top: 10%; height: 80%; width: 30%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 80%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 80%; top: 10%; height: 80%; width: 20%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 90%; height: 5%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+
+<!-- .element: class="footer" -->
+</div>
+<div class="" style="position: absolute; left: 0%; top: 95%; height: 5%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+ETHKL ZK Workshop <!-- .element: style="font-size: 0.3em" -->
+</div>
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<style>
+h1,h2,h3,h4,h5,h6 { 
+    text-transform: none !important; 
+} 
+strong { 
+    padding-left: 1rem; 
+    padding-right: 1rem; 
+    background-color: #836953; 
+} 
+hr { 
+    width: 100%; 
+    border: 1px solid white; 
+} 
+.left {
+	text-align: left;
+}
+.small {
+	font-size: 0.7em;
+}
+.title h1, .title h2, .title h3, .title h4, .title h5, .title h6, .title p{ 
+    width: 100%; 
+    position: absolute; 
+    left: 0;
+    top: 0; 
+    background-color: #836953; 
+    padding: 0.2em;
+}
+.footer {
+    width: 100%; 
+    font-size: 0.4em;
+}
+</style>
+
+<div class="title" style="position: absolute; left: 0%; top: 0%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+<!-- .element: class="title" -->
+</div>
+
+
+Questions: What is _____ ?
+- Group?
+- `$\mathbb{Z}$`?
+- `$\mathbb{Z_q}$`?
+- `$\mathbb{Z^*_q}$`?
+- Generator?
+- Are they cyclic?
+
+
+<div class="" style="position: absolute; left: 5%; top: 10%; height: 80%; width: 90%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 30%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 30%; top: 10%; height: 80%; width: 70%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 40%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 40%; top: 10%; height: 80%; width: 60%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 50%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 50%; top: 10%; height: 80%; width: 50%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 60%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 60%; top: 10%; height: 80%; width: 40%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 70%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 70%; top: 10%; height: 80%; width: 30%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 80%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 80%; top: 10%; height: 80%; width: 20%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 90%; height: 5%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+
+<!-- .element: class="footer" -->
+</div>
+<div class="" style="position: absolute; left: 0%; top: 95%; height: 5%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+ETHKL ZK Workshop <!-- .element: style="font-size: 0.3em" -->
+</div>
+</div>
+
+<aside class="notes"><ul>
+<li>Group should have its set and the definition for the binary operation</li>
+<li>What&#39;s the difference between <code>$Z$</code> and <code>$Z_q$</code>?</li>
+<li><code>$\mathbb{Z}$</code> is the set of all integers which is also a group against addition</li>
+<li>Is <code>$\mathbb{Z_q}$</code> finite?</li>
+<li>What&#39;s the difference between <code>$\mathbb{Z}^*_q$</code> and <code>$\mathbb{Z}_q$</code>?</li>
+<li>What&#39;s the difference between <code>$\mathbb{Z}^*_q$</code> and <code>$\mathbb{Z}_q$</code>?</li>
+<li>What&#39;s the difference between <code>$\mathbb{Z}^*_q$</code> and <code>$\mathbb{Q}^*$</code>?</li>
+</ul>
+</aside></script></section></section><section ><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<style>
+h1,h2,h3,h4,h5,h6 { 
+    text-transform: none !important; 
+} 
+strong { 
+    padding-left: 1rem; 
+    padding-right: 1rem; 
+    background-color: #836953; 
+} 
+hr { 
+    width: 100%; 
+    border: 1px solid white; 
+} 
+.left {
+	text-align: left;
+}
+.small {
+	font-size: 0.7em;
+}
+.title h1, .title h2, .title h3, .title h4, .title h5, .title h6, .title p{ 
+    width: 100%; 
+    position: absolute; 
+    left: 0;
+    top: 0; 
+    background-color: #836953; 
+    padding: 0.2em;
+}
+.footer {
+    width: 100%; 
+    font-size: 0.4em;
+}
+</style>
+
+<div class="title" style="position: absolute; left: 0%; top: 0%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+<!-- .element: class="title" -->
+</div>
+
+### Elliptic Curve Cryptography
+
+<div class="" style="position: absolute; left: 5%; top: 10%; height: 80%; width: 90%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 30%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 30%; top: 10%; height: 80%; width: 70%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 40%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 40%; top: 10%; height: 80%; width: 60%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 50%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 50%; top: 10%; height: 80%; width: 50%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 60%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 60%; top: 10%; height: 80%; width: 40%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 70%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 70%; top: 10%; height: 80%; width: 30%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 80%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 80%; top: 10%; height: 80%; width: 20%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 90%; height: 5%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+
+<!-- .element: class="footer" -->
+</div>
+<div class="" style="position: absolute; left: 0%; top: 95%; height: 5%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+ETHKL ZK Workshop <!-- .element: style="font-size: 0.3em" -->
+</div>
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<style>
+h1,h2,h3,h4,h5,h6 { 
+    text-transform: none !important; 
+} 
+strong { 
+    padding-left: 1rem; 
+    padding-right: 1rem; 
+    background-color: #836953; 
+} 
+hr { 
+    width: 100%; 
+    border: 1px solid white; 
+} 
+.left {
+	text-align: left;
+}
+.small {
+	font-size: 0.7em;
+}
+.title h1, .title h2, .title h3, .title h4, .title h5, .title h6, .title p{ 
+    width: 100%; 
+    position: absolute; 
+    left: 0;
+    top: 0; 
+    background-color: #836953; 
+    padding: 0.2em;
+}
+.footer {
+    width: 100%; 
+    font-size: 0.4em;
+}
+</style>
+
+<div class="title" style="position: absolute; left: 0%; top: 0%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+<!-- .element: class="title" -->
+</div>
+
+
+### Field
+
+<div class="" style="position: absolute; left: 5%; top: 10%; height: 80%; width: 90%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 30%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 30%; top: 10%; height: 80%; width: 70%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 40%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 40%; top: 10%; height: 80%; width: 60%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 50%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 50%; top: 10%; height: 80%; width: 50%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 60%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 60%; top: 10%; height: 80%; width: 40%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 70%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 70%; top: 10%; height: 80%; width: 30%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 80%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 80%; top: 10%; height: 80%; width: 20%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 90%; height: 5%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+
+<!-- .element: class="footer" -->
+</div>
+<div class="" style="position: absolute; left: 0%; top: 95%; height: 5%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+ETHKL ZK Workshop <!-- .element: style="font-size: 0.3em" -->
+</div>
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<style>
+h1,h2,h3,h4,h5,h6 { 
+    text-transform: none !important; 
+} 
+strong { 
+    padding-left: 1rem; 
+    padding-right: 1rem; 
+    background-color: #836953; 
+} 
+hr { 
+    width: 100%; 
+    border: 1px solid white; 
+} 
+.left {
+	text-align: left;
+}
+.small {
+	font-size: 0.7em;
+}
+.title h1, .title h2, .title h3, .title h4, .title h5, .title h6, .title p{ 
+    width: 100%; 
+    position: absolute; 
+    left: 0;
+    top: 0; 
+    background-color: #836953; 
+    padding: 0.2em;
+}
+.footer {
+    width: 100%; 
+    font-size: 0.4em;
+}
+</style>
+
+<div class="title" style="position: absolute; left: 0%; top: 0%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+<!-- .element: class="title" -->
+</div>
+
+
+### Abelian Group
+
+***
+
+\+ Commutativity
+- `$a,b \in \mathbb{G}$`
+- `$a \circ b = b \circ a$`
+
+<div class="" style="position: absolute; left: 5%; top: 10%; height: 80%; width: 90%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 30%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 30%; top: 10%; height: 80%; width: 70%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 40%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 40%; top: 10%; height: 80%; width: 60%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 50%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 50%; top: 10%; height: 80%; width: 50%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 60%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 60%; top: 10%; height: 80%; width: 40%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 70%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 70%; top: 10%; height: 80%; width: 30%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 80%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 80%; top: 10%; height: 80%; width: 20%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 90%; height: 5%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+
+<!-- .element: class="footer" -->
+</div>
+<div class="" style="position: absolute; left: 0%; top: 95%; height: 5%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+ETHKL ZK Workshop <!-- .element: style="font-size: 0.3em" -->
+</div>
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<style>
+h1,h2,h3,h4,h5,h6 { 
+    text-transform: none !important; 
+} 
+strong { 
+    padding-left: 1rem; 
+    padding-right: 1rem; 
+    background-color: #836953; 
+} 
+hr { 
+    width: 100%; 
+    border: 1px solid white; 
+} 
+.left {
+	text-align: left;
+}
+.small {
+	font-size: 0.7em;
+}
+.title h1, .title h2, .title h3, .title h4, .title h5, .title h6, .title p{ 
+    width: 100%; 
+    position: absolute; 
+    left: 0;
+    top: 0; 
+    background-color: #836953; 
+    padding: 0.2em;
+}
+.footer {
+    width: 100%; 
+    font-size: 0.4em;
+}
+</style>
+
+<div class="title" style="position: absolute; left: 0%; top: 0%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+<!-- .element: class="title" -->
+</div>
+
+
+### Field: usually denoted as `$\mathbb{F}$`
+***
+- has 2 binary operations (`$+$`, `$\times$`)
+- `$\{ x | x \in \mathbb{F}\}$` is an **abelian group** for `$+$`
+- `$\{ x | x \in \mathbb{F}, x \neq 0 \}$` is an **abelian group** for `$\times$`
+- The distributive law: `$a\times(b+c) = a\times b + a\times c$`
+
+<div class="" style="position: absolute; left: 5%; top: 10%; height: 80%; width: 90%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 30%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 30%; top: 10%; height: 80%; width: 70%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 40%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 40%; top: 10%; height: 80%; width: 60%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 50%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 50%; top: 10%; height: 80%; width: 50%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 60%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 60%; top: 10%; height: 80%; width: 40%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 70%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 70%; top: 10%; height: 80%; width: 30%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 80%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 80%; top: 10%; height: 80%; width: 20%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 90%; height: 5%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+
+<!-- .element: class="footer" -->
+</div>
+<div class="" style="position: absolute; left: 0%; top: 95%; height: 5%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+ETHKL ZK Workshop <!-- .element: style="font-size: 0.3em" -->
+</div>
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<style>
+h1,h2,h3,h4,h5,h6 { 
+    text-transform: none !important; 
+} 
+strong { 
+    padding-left: 1rem; 
+    padding-right: 1rem; 
+    background-color: #836953; 
+} 
+hr { 
+    width: 100%; 
+    border: 1px solid white; 
+} 
+.left {
+	text-align: left;
+}
+.small {
+	font-size: 0.7em;
+}
+.title h1, .title h2, .title h3, .title h4, .title h5, .title h6, .title p{ 
+    width: 100%; 
+    position: absolute; 
+    left: 0;
+    top: 0; 
+    background-color: #836953; 
+    padding: 0.2em;
+}
+.footer {
+    width: 100%; 
+    font-size: 0.4em;
+}
+</style>
+
+<div class="title" style="position: absolute; left: 0%; top: 0%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+<!-- .element: class="title" -->
+</div>
+
+
+`$\mathbb{G}$` is an additive group that is a set of all points on an elliptic curve defined on a finite field `$\mathbb{F_p}$` where `$p$` is a large prime
+
+<div class="" style="position: absolute; left: 5%; top: 10%; height: 80%; width: 90%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 30%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 30%; top: 10%; height: 80%; width: 70%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 40%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 40%; top: 10%; height: 80%; width: 60%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 50%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 50%; top: 10%; height: 80%; width: 50%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 60%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 60%; top: 10%; height: 80%; width: 40%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 70%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 70%; top: 10%; height: 80%; width: 30%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 80%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 80%; top: 10%; height: 80%; width: 20%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 90%; height: 5%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+
+<!-- .element: class="footer" -->
+</div>
+<div class="" style="position: absolute; left: 0%; top: 95%; height: 5%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+ETHKL ZK Workshop <!-- .element: style="font-size: 0.3em" -->
+</div>
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<style>
+h1,h2,h3,h4,h5,h6 { 
+    text-transform: none !important; 
+} 
+strong { 
+    padding-left: 1rem; 
+    padding-right: 1rem; 
+    background-color: #836953; 
+} 
+hr { 
+    width: 100%; 
+    border: 1px solid white; 
+} 
+.left {
+	text-align: left;
+}
+.small {
+	font-size: 0.7em;
+}
+.title h1, .title h2, .title h3, .title h4, .title h5, .title h6, .title p{ 
+    width: 100%; 
+    position: absolute; 
+    left: 0;
+    top: 0; 
+    background-color: #836953; 
+    padding: 0.2em;
+}
+.footer {
+    width: 100%; 
+    font-size: 0.4em;
+}
+</style>
+
+<div class="title" style="position: absolute; left: 0%; top: 0%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+<!-- .element: class="title" -->
+</div>
+
+
+For a group `$\mathbb{G}$`, we can define the additive binary operation using geometry
+
+***
+
+When a line intersects three points on the curve
+- `$P + Q + R = 0$`
+- `$P + Q = - R$`
+
+https://andrea.corbellini.name/2015/05/17/elliptic-curve-cryptography-a-gentle-introduction/
+
+<div class="" style="position: absolute; left: 5%; top: 10%; height: 80%; width: 90%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 30%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 30%; top: 10%; height: 80%; width: 70%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 40%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 40%; top: 10%; height: 80%; width: 60%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 50%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 50%; top: 10%; height: 80%; width: 50%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 60%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 60%; top: 10%; height: 80%; width: 40%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 70%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 70%; top: 10%; height: 80%; width: 30%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 80%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 80%; top: 10%; height: 80%; width: 20%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 90%; height: 5%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+
+<!-- .element: class="footer" -->
+</div>
+<div class="" style="position: absolute; left: 0%; top: 95%; height: 5%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+ETHKL ZK Workshop <!-- .element: style="font-size: 0.3em" -->
+</div>
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<style>
+h1,h2,h3,h4,h5,h6 { 
+    text-transform: none !important; 
+} 
+strong { 
+    padding-left: 1rem; 
+    padding-right: 1rem; 
+    background-color: #836953; 
+} 
+hr { 
+    width: 100%; 
+    border: 1px solid white; 
+} 
+.left {
+	text-align: left;
+}
+.small {
+	font-size: 0.7em;
+}
+.title h1, .title h2, .title h3, .title h4, .title h5, .title h6, .title p{ 
+    width: 100%; 
+    position: absolute; 
+    left: 0;
+    top: 0; 
+    background-color: #836953; 
+    padding: 0.2em;
+}
+.footer {
+    width: 100%; 
+    font-size: 0.4em;
+}
+</style>
+
+<div class="title" style="position: absolute; left: 0%; top: 0%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+<!-- .element: class="title" -->
+</div>
+
+
+## EC-DLA
+
+<div class="" style="position: absolute; left: 5%; top: 10%; height: 80%; width: 90%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 30%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 30%; top: 10%; height: 80%; width: 70%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 40%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 40%; top: 10%; height: 80%; width: 60%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 50%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 50%; top: 10%; height: 80%; width: 50%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 60%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 60%; top: 10%; height: 80%; width: 40%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 70%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 70%; top: 10%; height: 80%; width: 30%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 80%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 80%; top: 10%; height: 80%; width: 20%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 90%; height: 5%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+
+<!-- .element: class="footer" -->
+</div>
+<div class="" style="position: absolute; left: 0%; top: 95%; height: 5%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+ETHKL ZK Workshop <!-- .element: style="font-size: 0.3em" -->
+</div>
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<style>
+h1,h2,h3,h4,h5,h6 { 
+    text-transform: none !important; 
+} 
+strong { 
+    padding-left: 1rem; 
+    padding-right: 1rem; 
+    background-color: #836953; 
+} 
+hr { 
+    width: 100%; 
+    border: 1px solid white; 
+} 
+.left {
+	text-align: left;
+}
+.small {
+	font-size: 0.7em;
+}
+.title h1, .title h2, .title h3, .title h4, .title h5, .title h6, .title p{ 
+    width: 100%; 
+    position: absolute; 
+    left: 0;
+    top: 0; 
+    background-color: #836953; 
+    padding: 0.2em;
+}
+.footer {
+    width: 100%; 
+    font-size: 0.4em;
+}
+</style>
+
+<div class="title" style="position: absolute; left: 0%; top: 0%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+<!-- .element: class="title" -->
+</div>
+
+
+DLA in the multiplicative group
+- It is hard to know `$x$` using `$y$` when `$y = g^x$`
+***
+DLA in the additive group
+- It is hard to know `$x$` using `$y$` when `$y = xG$`
+
+<div class="" style="position: absolute; left: 5%; top: 10%; height: 80%; width: 90%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 30%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 30%; top: 10%; height: 80%; width: 70%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 40%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 40%; top: 10%; height: 80%; width: 60%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 50%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 50%; top: 10%; height: 80%; width: 50%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 60%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 60%; top: 10%; height: 80%; width: 40%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 70%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 70%; top: 10%; height: 80%; width: 30%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 80%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 80%; top: 10%; height: 80%; width: 20%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 90%; height: 5%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+
+<!-- .element: class="footer" -->
+</div>
+<div class="" style="position: absolute; left: 0%; top: 95%; height: 5%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+ETHKL ZK Workshop <!-- .element: style="font-size: 0.3em" -->
+</div>
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<style>
+h1,h2,h3,h4,h5,h6 { 
+    text-transform: none !important; 
+} 
+strong { 
+    padding-left: 1rem; 
+    padding-right: 1rem; 
+    background-color: #836953; 
+} 
+hr { 
+    width: 100%; 
+    border: 1px solid white; 
+} 
+.left {
+	text-align: left;
+}
+.small {
+	font-size: 0.7em;
+}
+.title h1, .title h2, .title h3, .title h4, .title h5, .title h6, .title p{ 
+    width: 100%; 
+    position: absolute; 
+    left: 0;
+    top: 0; 
+    background-color: #836953; 
+    padding: 0.2em;
+}
+.footer {
+    width: 100%; 
+    font-size: 0.4em;
+}
+</style>
+
+<div class="title" style="position: absolute; left: 0%; top: 0%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+<!-- .element: class="title" -->
+</div>
+
+
+#### How to compute `$xG$` (Scalar Multiplication) in ECC?
+***
+- Double & Add
+`$13G = (1*2^{3} + 1*2^{2} + 0*2^{1} + 1*2^{0}) G$`
+
+<div class="" style="position: absolute; left: 5%; top: 10%; height: 80%; width: 90%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 30%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 30%; top: 10%; height: 80%; width: 70%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 40%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 40%; top: 10%; height: 80%; width: 60%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 50%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 50%; top: 10%; height: 80%; width: 50%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 60%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 60%; top: 10%; height: 80%; width: 40%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 70%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 70%; top: 10%; height: 80%; width: 30%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 80%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 80%; top: 10%; height: 80%; width: 20%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 90%; height: 5%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+
+<!-- .element: class="footer" -->
+</div>
+<div class="" style="position: absolute; left: 0%; top: 95%; height: 5%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+ETHKL ZK Workshop <!-- .element: style="font-size: 0.3em" -->
+</div>
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<style>
+h1,h2,h3,h4,h5,h6 { 
+    text-transform: none !important; 
+} 
+strong { 
+    padding-left: 1rem; 
+    padding-right: 1rem; 
+    background-color: #836953; 
+} 
+hr { 
+    width: 100%; 
+    border: 1px solid white; 
+} 
+.left {
+	text-align: left;
+}
+.small {
+	font-size: 0.7em;
+}
+.title h1, .title h2, .title h3, .title h4, .title h5, .title h6, .title p{ 
+    width: 100%; 
+    position: absolute; 
+    left: 0;
+    top: 0; 
+    background-color: #836953; 
+    padding: 0.2em;
+}
+.footer {
+    width: 100%; 
+    font-size: 0.4em;
+}
+</style>
+
+<div class="title" style="position: absolute; left: 0%; top: 0%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+<!-- .element: class="title" -->
+</div>
+
+
+### DH<br>(Diffie Hellman Key Exchange)
+
+- `$A = g^a, B = g^b$` where `$A,B$` are the public keys and `$a,b$` are the private keys
+- Shared key `$k = g^{ab}$`
+***
+
+### ECDH<br>(Elliptic Curve DH)
+
+- `$A = aG, B = bG$` where `$A,B$` are the public keys and `$a,b$` are the private keys
+- Shared key `$k = abG$`
+
+<div class="" style="position: absolute; left: 5%; top: 10%; height: 80%; width: 90%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 30%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 30%; top: 10%; height: 80%; width: 70%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 40%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 40%; top: 10%; height: 80%; width: 60%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 50%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 50%; top: 10%; height: 80%; width: 50%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 60%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 60%; top: 10%; height: 80%; width: 40%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 70%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 70%; top: 10%; height: 80%; width: 30%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 80%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 80%; top: 10%; height: 80%; width: 20%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 90%; height: 5%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+
+<!-- .element: class="footer" -->
+</div>
+<div class="" style="position: absolute; left: 0%; top: 95%; height: 5%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+ETHKL ZK Workshop <!-- .element: style="font-size: 0.3em" -->
+</div>
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<style>
+h1,h2,h3,h4,h5,h6 { 
+    text-transform: none !important; 
+} 
+strong { 
+    padding-left: 1rem; 
+    padding-right: 1rem; 
+    background-color: #836953; 
+} 
+hr { 
+    width: 100%; 
+    border: 1px solid white; 
+} 
+.left {
+	text-align: left;
+}
+.small {
+	font-size: 0.7em;
+}
+.title h1, .title h2, .title h3, .title h4, .title h5, .title h6, .title p{ 
+    width: 100%; 
+    position: absolute; 
+    left: 0;
+    top: 0; 
+    background-color: #836953; 
+    padding: 0.2em;
+}
+.footer {
+    width: 100%; 
+    font-size: 0.4em;
+}
+</style>
+
+<div class="title" style="position: absolute; left: 0%; top: 0%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+<div class="block">
+
+### ELGAMAL on DLA
+</div>
+
+
+<!-- .element: class="title" -->
+</div>
+
+
+
+
+<span style="font-size:0.7em">
+
+- Alice & Bob's key pairs: `$A = g^{a}$` and `$B = g^{b}$`
+- Alice chooses a random integer `$k \in [p-2]$`
+- Compute the ciphertext pairs `$(c_1, c_2)$` as follows
+    - `$c_1 = g^{k} \pmod{p}$`
+    - `$c_2 = m*(B^{k}) \pmod{p}$`
+- Bob now decrypts the message `$(c_1, c_2)$` as follows:
+    - `$m = c_2 * (c_1^{b})^{-1} \pmod{p}$`
+    > `$= c_2 * (c_1^{b})^{-1} \pmod{p}$`
+    > `$= m*(B^{k}) * ((g^{k})^{b})^{-1}$`
+    > `$= m*(g^{bk}) * (g^{bk})^{-1}$`
+    > `$= m$`
+    
+</span>
+
+<div class="" style="position: absolute; left: 5%; top: 10%; height: 80%; width: 90%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 30%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 30%; top: 10%; height: 80%; width: 70%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 40%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 40%; top: 10%; height: 80%; width: 60%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 50%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 50%; top: 10%; height: 80%; width: 50%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 60%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 60%; top: 10%; height: 80%; width: 40%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 70%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 70%; top: 10%; height: 80%; width: 30%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 80%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 80%; top: 10%; height: 80%; width: 20%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 90%; height: 5%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+
+<!-- .element: class="footer" -->
+</div>
+<div class="" style="position: absolute; left: 0%; top: 95%; height: 5%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+ETHKL ZK Workshop <!-- .element: style="font-size: 0.3em" -->
+</div>
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<style>
+h1,h2,h3,h4,h5,h6 { 
+    text-transform: none !important; 
+} 
+strong { 
+    padding-left: 1rem; 
+    padding-right: 1rem; 
+    background-color: #836953; 
+} 
+hr { 
+    width: 100%; 
+    border: 1px solid white; 
+} 
+.left {
+	text-align: left;
+}
+.small {
+	font-size: 0.7em;
+}
+.title h1, .title h2, .title h3, .title h4, .title h5, .title h6, .title p{ 
+    width: 100%; 
+    position: absolute; 
+    left: 0;
+    top: 0; 
+    background-color: #836953; 
+    padding: 0.2em;
+}
+.footer {
+    width: 100%; 
+    font-size: 0.4em;
+}
+</style>
+
+<div class="title" style="position: absolute; left: 0%; top: 0%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+<div class="block">
+
+### ELGAMAL on ECDLA
+</div>
+
+
+<!-- .element: class="title" -->
+</div>
+
+
+
+
+<span style="font-size:0.7em">
+
+- Encode message m into `$M$`
+- Alice & Bob's key pairs: `$A = aG$` and `$B = bG$`
+- Alice chooses a random integer `$k \in [p-1]$`
+- Compute the ciphertext pairs `$(C_1, C_2)$` as follows
+    - `$C_1 = k*G$`
+    - `$C_2 = M + k*B$`
+- Bob now decrypts the message `$(c_1, c_2)$` as follows:
+    - `$M' = C_2 - b * C_1$`
+
+</span>
+
+<div class="" style="position: absolute; left: 5%; top: 10%; height: 80%; width: 90%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 30%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 30%; top: 10%; height: 80%; width: 70%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 40%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 40%; top: 10%; height: 80%; width: 60%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 50%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 50%; top: 10%; height: 80%; width: 50%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 60%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 60%; top: 10%; height: 80%; width: 40%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 70%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 70%; top: 10%; height: 80%; width: 30%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 80%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 80%; top: 10%; height: 80%; width: 20%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 90%; height: 5%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+
+<!-- .element: class="footer" -->
+</div>
+<div class="" style="position: absolute; left: 0%; top: 95%; height: 5%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+ETHKL ZK Workshop <!-- .element: style="font-size: 0.3em" -->
+</div>
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<style>
+h1,h2,h3,h4,h5,h6 { 
+    text-transform: none !important; 
+} 
+strong { 
+    padding-left: 1rem; 
+    padding-right: 1rem; 
+    background-color: #836953; 
+} 
+hr { 
+    width: 100%; 
+    border: 1px solid white; 
+} 
+.left {
+	text-align: left;
+}
+.small {
+	font-size: 0.7em;
+}
+.title h1, .title h2, .title h3, .title h4, .title h5, .title h6, .title p{ 
+    width: 100%; 
+    position: absolute; 
+    left: 0;
+    top: 0; 
+    background-color: #836953; 
+    padding: 0.2em;
+}
+.footer {
+    width: 100%; 
+    font-size: 0.4em;
+}
+</style>
+
+<div class="title" style="position: absolute; left: 0%; top: 0%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+<div class="block">
+
+### Schnorr Signature
+</div>
+
+
+<!-- .element: class="title" -->
+</div>
+
+
+
+
+
+
+<div class="" style="position: absolute; left: 5%; top: 10%; height: 80%; width: 90%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+Given parameters:
+- private key: `$k$`
+- public key: `$P$`
+- challenge: `$e$`
+
+***
+
+What if the signature is `$s = ek$`?<br>
+It's very easy to retrieve `$k$` from `$k = s/e$`
+
+***
+
+Instead
+- we choose a random nonce `$r$`
+- And share its public nonce `$R = rG$` together
+- The signature becomes `$(s, R)$` where `$s = r + ke$`
+</div>
+
+<!-- .element: style="font-size: 0.7em" -->
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 30%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 30%; top: 10%; height: 80%; width: 70%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 40%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 40%; top: 10%; height: 80%; width: 60%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 50%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 50%; top: 10%; height: 80%; width: 50%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 60%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 60%; top: 10%; height: 80%; width: 40%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 70%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 70%; top: 10%; height: 80%; width: 30%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 80%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 80%; top: 10%; height: 80%; width: 20%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 90%; height: 5%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+
+<!-- .element: class="footer" -->
+</div>
+<div class="" style="position: absolute; left: 0%; top: 95%; height: 5%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+ETHKL ZK Workshop <!-- .element: style="font-size: 0.3em" -->
+</div>
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<style>
+h1,h2,h3,h4,h5,h6 { 
+    text-transform: none !important; 
+} 
+strong { 
+    padding-left: 1rem; 
+    padding-right: 1rem; 
+    background-color: #836953; 
+} 
+hr { 
+    width: 100%; 
+    border: 1px solid white; 
+} 
+.left {
+	text-align: left;
+}
+.small {
+	font-size: 0.7em;
+}
+.title h1, .title h2, .title h3, .title h4, .title h5, .title h6, .title p{ 
+    width: 100%; 
+    position: absolute; 
+    left: 0;
+    top: 0; 
+    background-color: #836953; 
+    padding: 0.2em;
+}
+.footer {
+    width: 100%; 
+    font-size: 0.4em;
+}
+</style>
+
+<div class="title" style="position: absolute; left: 0%; top: 0%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+<div class="block">
+
+### ECDSA
+</div>
+
+
+<!-- .element: class="title" -->
+</div>
+
+
+
+
+- public key & private key: `$P = pG$`
+- Choose a random nonce `$k$`
+- Its public nonce: `$r = (kG).x$`
+- `$s = {1 \over k}(e + p\cdot r)$`
+- Signature: `$(r, s)$`
+- Verification: `${e \over s}G + {r \over s}P = ({e + rp \over s})G = kG$`
+
+
+<div class="" style="position: absolute; left: 5%; top: 10%; height: 80%; width: 90%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 30%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 30%; top: 10%; height: 80%; width: 70%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 40%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 40%; top: 10%; height: 80%; width: 60%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 50%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 50%; top: 10%; height: 80%; width: 50%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 60%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 60%; top: 10%; height: 80%; width: 40%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 70%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 70%; top: 10%; height: 80%; width: 30%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 80%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 80%; top: 10%; height: 80%; width: 20%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 90%; height: 5%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+
+<!-- .element: class="footer" -->
+</div>
+<div class="" style="position: absolute; left: 0%; top: 95%; height: 5%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+ETHKL ZK Workshop <!-- .element: style="font-size: 0.3em" -->
+</div>
+</div></script></section></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<style>
+h1,h2,h3,h4,h5,h6 { 
+    text-transform: none !important; 
+} 
+strong { 
+    padding-left: 1rem; 
+    padding-right: 1rem; 
+    background-color: #836953; 
+} 
+hr { 
+    width: 100%; 
+    border: 1px solid white; 
+} 
+.left {
+	text-align: left;
+}
+.small {
+	font-size: 0.7em;
+}
+.title h1, .title h2, .title h3, .title h4, .title h5, .title h6, .title p{ 
+    width: 100%; 
+    position: absolute; 
+    left: 0;
+    top: 0; 
+    background-color: #836953; 
+    padding: 0.2em;
+}
+.footer {
+    width: 100%; 
+    font-size: 0.4em;
+}
+</style>
+
+<div class="title" style="position: absolute; left: 0%; top: 0%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+<div class="block">
+
+Breakout Group Session
+</div>
+
+
+<!-- .element: class="title" -->
+</div>
+
+
+
+
+
+
+<div class="" style="position: absolute; left: 5%; top: 10%; height: 80%; width: 90%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+1. Explain why Caesar Cipher is also a group
+</div>
+
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 30%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 30%; top: 10%; height: 80%; width: 70%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 40%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 40%; top: 10%; height: 80%; width: 60%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 50%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 50%; top: 10%; height: 80%; width: 50%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 60%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 60%; top: 10%; height: 80%; width: 40%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 70%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 70%; top: 10%; height: 80%; width: 30%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 80%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 80%; top: 10%; height: 80%; width: 20%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 90%; height: 5%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+
+<!-- .element: class="footer" -->
+</div>
+<div class="" style="position: absolute; left: 0%; top: 95%; height: 5%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+ETHKL ZK Workshop <!-- .element: style="font-size: 0.3em" -->
+</div>
+</div></script></section></div>
+    </div>
+
+    <script src="dist/reveal.js"></script>
+
+    <script src="plugin/markdown/markdown.js"></script>
+    <script src="plugin/highlight/highlight.js"></script>
+    <script src="plugin/zoom/zoom.js"></script>
+    <script src="plugin/notes/notes.js"></script>
+    <script src="plugin/math/math.js"></script>
+	<script src="plugin/mermaid/mermaid.js"></script>
+	<script src="plugin/chart/chart.min.js"></script>
+	<script src="plugin/chart/plugin.js"></script>
+	<script src="plugin/customcontrols/plugin.js"></script>
+
+    <script>
+      function extend() {
+        var target = {};
+        for (var i = 0; i < arguments.length; i++) {
+          var source = arguments[i];
+          for (var key in source) {
+            if (source.hasOwnProperty(key)) {
+              target[key] = source[key];
+            }
+          }
+        }
+        return target;
+      }
+
+	  function isLight(color) {
+		let hex = color.replace('#', '');
+
+		// convert #fff => #ffffff
+		if(hex.length == 3){
+			hex = `${hex[0]}${hex[0]}${hex[1]}${hex[1]}${hex[2]}${hex[2]}`;
+		}
+
+		const c_r = parseInt(hex.substr(0, 2), 16);
+		const c_g = parseInt(hex.substr(2, 2), 16);
+		const c_b = parseInt(hex.substr(4, 2), 16);
+		const brightness = ((c_r * 299) + (c_g * 587) + (c_b * 114)) / 1000;
+		return brightness > 155;
+	}
+
+	var bgColor = getComputedStyle(document.documentElement).getPropertyValue('--r-background-color').trim();
+	var isLight = isLight(bgColor);
+
+	if(isLight){
+		document.body.classList.add('has-light-background');
+	} else {
+		document.body.classList.add('has-dark-background');
+	}
+
+      // default options to init reveal.js
+      var defaultOptions = {
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+        transition: 'default', // none/fade/slide/convex/concave/zoom
+        plugins: [
+          RevealMarkdown,
+          RevealHighlight,
+          RevealZoom,
+          RevealNotes,
+          RevealMath.MathJax3,
+		  RevealMermaid,
+		  RevealChart,
+		  RevealCustomControls,
+        ],
+
+
+    	allottedTime: 120 * 1000,
+
+		mathjax3: {
+			mathjax: 'plugin/math/mathjax/tex-mml-chtml.js',
+		},
+		markdown: {
+		  gfm: true,
+		  mangle: true,
+		  pedantic: false,
+		  smartLists: false,
+		  smartypants: false,
+		},
+
+		mermaid: {
+			theme: isLight ? 'default' : 'dark',
+		},
+
+		customcontrols: {
+			controls: [
+			]
+		},
+      };
+
+      // options from URL query string
+      var queryOptions = Reveal().getQueryHash() || {};
+
+      var options = extend(defaultOptions, {"width":960,"height":700,"margin":0.04,"controls":true,"progress":true,"slideNumber":false,"transition":"slide","transitionSpeed":"default"}, queryOptions);
+    </script>
+
+    <script>
+      Reveal.initialize(options);
+    </script>
+  </body>
+
+  <!-- created with Advanced Slides -->
+</html>
