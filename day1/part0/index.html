@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="plugin/highlight/zenburn.css" />
 	<link rel="stylesheet" href="css/layout.css" />
 	<link rel="stylesheet" href="plugin/customcontrols/style.css">
+	<link rel="stylesheet" href="plugin/chalkboard/style.css">
 
 
 
@@ -772,6 +773,7 @@ ETHKL ZK Workshop <!-- .element: style="font-size: 0.3em" -->
 	<script src="plugin/chart/chart.min.js"></script>
 	<script src="plugin/chart/plugin.js"></script>
 	<script src="plugin/customcontrols/plugin.js"></script>
+	<script src="plugin/chalkboard/plugin.js"></script>
 
     <script>
       function extend() {
@@ -827,6 +829,7 @@ ETHKL ZK Workshop <!-- .element: style="font-size: 0.3em" -->
 		  RevealMermaid,
 		  RevealChart,
 		  RevealCustomControls,
+		  RevealChalkboard, 
         ],
 
 
@@ -849,6 +852,14 @@ ETHKL ZK Workshop <!-- .element: style="font-size: 0.3em" -->
 
 		customcontrols: {
 			controls: [
+				{ icon: '<i class="fa fa-pen-square"></i>',
+				title: 'Toggle chalkboard (B)',
+				action: 'RevealChalkboard.toggleChalkboard();'
+				},
+				{ icon: '<i class="fa fa-pen"></i>',
+				title: 'Toggle notes canvas (C)',
+				action: 'RevealChalkboard.toggleNotesCanvas();'
+				},
 			]
 		},
       };
